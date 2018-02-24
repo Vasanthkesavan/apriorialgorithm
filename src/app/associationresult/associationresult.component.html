@@ -1,0 +1,35 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput #message maxlength="256" placeholder="Confidence">
+    <mat-hint align="start"><strong>Enter only in percentage</strong> </mat-hint>
+  </mat-form-field>
+</form>
+<button mat-raised-button color="primary" (click)="onClick(message.value)">Calculate Association Rules</button>
+
+<div *ngIf="showHide">
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource3">
+      <ng-container matColumnDef="itemset">
+        <mat-header-cell *matHeaderCellDef> Item Set </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element[0]}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="support">
+        <mat-header-cell *matHeaderCellDef> Support in % </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{element[1]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="confidence">
+        <mat-header-cell *matHeaderCellDef> Confidence in % </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{element[2]}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>
+

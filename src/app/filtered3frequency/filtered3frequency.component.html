@@ -1,0 +1,45 @@
+<button mat-raised-button color="primary" (click)="onClick()">Calculate Third Frequency</button>
+
+<div *ngIf="showHide">
+  <p>
+    Filtered Three Frequent Set
+  </p>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource1">
+      <ng-container matColumnDef="itemset">
+        <mat-header-cell *matHeaderCellDef> Item Set </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{all_items[element[2]] + ' and ' + all_items[element[3]] + ' and ' + all_items[element[5]]}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="support">
+        <mat-header-cell *matHeaderCellDef> Support </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{element[6]}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource2">
+      <ng-container matColumnDef="itemset">
+        <mat-header-cell *matHeaderCellDef> Item Set </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{all_items[element[2]] + ' and ' + all_items[element[3]] + ' and ' + all_items[element[5]]}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="support">
+        <mat-header-cell *matHeaderCellDef> Support </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{element[6]}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <app-associationresult [dataSource]="[dataSource[0], dataSource2, supportValue]"></app-associationresult>
+</div>

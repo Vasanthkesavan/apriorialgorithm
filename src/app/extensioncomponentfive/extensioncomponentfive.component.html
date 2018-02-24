@@ -1,0 +1,100 @@
+<h2>
+  Transaction Table: {{title}}
+</h2>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+
+    <ng-container matColumnDef="_id">
+      <mat-header-cell *matHeaderCellDef> Transaction ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item1">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][0]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item1}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item2">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][1]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item2}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item3">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][2]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item3}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item4">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][3]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item4}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item5">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][4]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item5}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item6">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][5]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item6}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item7">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][6]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item7}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item8">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][7]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item8}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item9">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][8]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item9}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item10">
+      <mat-header-cell *matHeaderCellDef> {{data[20]['all_items'][9]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.item10}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<br>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput #message maxlength="256" placeholder="Support">
+    <mat-hint align="start"><strong>Enter only in percentage</strong> </mat-hint>
+  </mat-form-field>
+</form>
+<button mat-raised-button color="primary" (click)="toggleCalculation(message.value)">Calculate First Frequency</button>
+<div *ngIf="showHide">
+  <p>
+    Frequent One Item Set
+  </p>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource1">
+      <ng-container matColumnDef="itemset">
+        <mat-header-cell *matHeaderCellDef> Item Set </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="support">
+        <mat-header-cell *matHeaderCellDef> Support </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index;"> {{calculateVal("item", i)}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+    </mat-table>
+  </div>
+  <br>
+  <app-filtered1frequency [dataSource]="[newOneFrequency, data[20]['all_items'], message.value]"></app-filtered1frequency>
+</div>

@@ -1,0 +1,21 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource1">
+    <ng-container matColumnDef="itemset">
+      <mat-header-cell *matHeaderCellDef> Item Set </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{all_items[element[1]]}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="support">
+      <mat-header-cell *matHeaderCellDef> Support </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index;"> {{element[2]}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<app-filtered2frequency [dataSource]="[dataSource1, supportValue]"></app-filtered2frequency>
+
